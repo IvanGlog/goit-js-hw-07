@@ -15,13 +15,13 @@ const refs = {
     gallery: document.querySelector('.gallery'),
 }
 
-const galleryCard = createGallary(galleryItems);
+const galleryCard = createGallery(galleryItems);
 refs.gallery.addEventListener('click', onCardGallery);
 
 
 // create gallery
-function createGallary(items) {
-    const tempGallary = []
+function createGallery(items) {
+    const tempGallery = []
     items.map(({ preview, original, description }) => {
         const img = `
         <div class="gallery__item">
@@ -35,20 +35,20 @@ function createGallary(items) {
             </a>
         </div>
         `
-        tempGallary.push(img)
+        tempGallery.push(img)
     })
-    return refs.gallery.insertAdjacentHTML('afterbegin',tempGallary.join(''))
+    return refs.gallery.insertAdjacentHTML('afterbegin',tempGallery.join(''))
 }
 
-createGallary(galleryItems)
+createGallery(galleryItems)
 
 
 function onCardGallery(event) {
     event.preventDefault();
     window.addEventListener('keydown', closeModal);
-    const findGalleryCard = event.target.classList.contains('gallery__image');
+    const tapGalleryCard = event.target.classList.contains('gallery__image');
 
-    if (!findGalleryCard) {
+    if (!tapGalleryCard) {
         return;
     }
     const urlImgCard = event.target.getAttribute('data-source');
